@@ -21,7 +21,7 @@ function getRecords($_store_id) {
 
         $_records[] = array(
             'name' => $_data['name'],
-            'price' => $_data['price'], // xxx add currency
+            'price' => $_data['price'], 
             'image' => $_data['media_gallery']['images'],
             'short_description' => $_data['short_description'],
             'description' => $_data['description'],
