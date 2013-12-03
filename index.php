@@ -25,7 +25,7 @@ if ($_export_all_store) {
 }
 ?>
 
-<?xml version="1.0" encoding="utf-8"?>
+<?php echo '<?xml version="1.0" encoding="utf-8">' ?>
 <Products>
     <?php foreach ($_records as $_entry): ?>
     <Product>
