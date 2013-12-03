@@ -4,7 +4,7 @@
 $_store_id = $argv[1];
 $_export_all_store = ($_store_id === NULL);
 
-require_once './app/Mage.php';
+require_once '../app/Mage.php';
 require_once 'utility.php';
 Mage::app();
 
@@ -29,11 +29,12 @@ if ($_export_all_store) {
 <Products>
     <?php foreach ($_records as $_entry): ?>
     <Product>
-        <Categorie></Categorie>
-        <Merk></Merk>
-        <Title><?php echo $_entry['name']; ?></Title>
-        <Price><?php echo $_entry['price']; ?></Price>
-        
+        <Titel><?php echo $_entry['name']; ?></Titel>
+        <Artikelcodefabrikant><?php echo $_entry['sku']; ?></Artikelcodefabrikant>
+        <Omschrijving><?php echo $_entry['description']; ?></Omschrijving>
+        <Prijs><?php echo formatPrice($_entry['price']); ?></Prijs>
+        <Levertijd></Levertijd>
+        <Deeplink><?php echo $_entry['path']; ?></Deeplink>
         <?php foreach ($_entry['image'] as $_idx => $_image): ?>
         <?php if ($_idx === 0): ?>
         <Image><?php echo $_image['file']; ?></Image>
@@ -42,9 +43,10 @@ if ($_export_all_store) {
         <?php endif; ?>
         <?php endforeach; ?>
 
-        <Url><?php echo $_entry['path']; ?></Url>
-        <Description><?php echo $_entry['description']; ?></Description>
-        <Productcode><?php echo $_entry['sku']; ?></Productcode>
+        <Categorie></Categorie>
+        <Merk></Merk>
+        <Portokosten></Portokosten>
+        <Winkelproductcode><?php echo $_entry['sku']; ?></Winkelproductcode>
     </Product>
     <?php endforeach;?>
 </Products>
