@@ -16,7 +16,7 @@ function getRecords($_store_id) {
         $_data = $_product->getData();
 
         foreach ($_data['media_gallery']['images'] as $_idx => $_image) {
-            $_data['media_gallery']['images'][$_idx]['file'] = $_media_url . $_image['file'];
+            $_data['media_gallery']['images'][$_idx]['file'] = $_media_url . 'catalog/product' . $_image['file'];
         }
 
         $_records[] = array(
