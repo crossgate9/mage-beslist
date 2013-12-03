@@ -27,3 +27,7 @@ function getRecords($_store_id) {
 
     return $_records;
 }
+
+function formatPrice($_price) {
+    return number_format($_price, 2, '.', ',');
+}
