@@ -56,7 +56,7 @@ function getRecords($_store_id) {
             continue;
         }
 
-        if ($_parent_product === false && isProductVisible($_parent_product) === false) {
+        if ($_parent_product === false && isProductVisible($_product) === false) {
             continue;
         }
 
@@ -77,10 +77,10 @@ function getRecords($_store_id) {
             'sku' => $_data['sku'], // xxx simple product sku
             'category' => '', // xxx category
             'size' => '', // xxx simple product size
-    	    // 'brand' => $_product->getAttributeText('brand'),
+    	    'brand' => $_product->getAttributeText('brand'),
     	    'stock' => ($_data['is_in_stock']) ? '1-2 werkdagen' : '3-5 werkdagen',
             'varient' => $_parent_product_data['sku'],
-    	    // 'size' => ($_parent_product !== false) ? $_product->getAttributeText('size') : 0
+    	    'size' => ($_parent_product !== false) ? $_product->getAttributeText('size') : 0
         );
 
     	$_records[] = $_record;
