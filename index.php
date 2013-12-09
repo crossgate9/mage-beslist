@@ -1,7 +1,10 @@
 <?php
 
 // specific store view
-$_store_id = $argv[1];
+$_store_id = '0';
+if (isset($argv[1])) {
+    $_store_id = $argv[1];
+}
 $_export_all_store = (($_store_id === NULL) || ($_store_id === '0'));
 
 require_once '../app/Mage.php';
