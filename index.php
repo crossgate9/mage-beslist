@@ -45,7 +45,7 @@ if ($_export_all_store) {
         <?php endif; ?>
         <?php endforeach; ?>
 
-        <Categorie></Categorie>
+        <Categorie><?php echo $_entry['category']; ?></Categorie>
         <Merk><?php echo $_entry['brand']; ?></Merk>
         <Portokosten>0</Portokosten>
         <Winkelproductcode><?php echo $_entry['varient']; ?></Winkelproductcode>

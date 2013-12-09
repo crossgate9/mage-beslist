@@ -32,6 +32,7 @@ function isProductInvalid($_product) {
 }
 
 function getRecords($_store_id) {
+    include_once('./category.php');
     $_product_collection = Mage::getResourceModel('catalog/product_collection')
                         -> setStoreId($_store_id)
                         -> addAttributeToFilter('type_id', array('eq' => 'simple'))
@@ -63,10 +64,23 @@ function getRecords($_store_id) {
     	$_data = $_product->getData();
         $_parent_product_data = ($_parent_product === false) ? $_data : $_parent_product->getData();
     
+        // images
         foreach ($_parent_product_data['media_gallery']['images'] as $_idx => $_image) {
             $_parent_product_data['media_gallery']['images'][$_idx]['file'] = $_media_url . 'catalog/product' . $_image['file'];
         }
 
+        // category
+        $_p = ($_parent_product === false) ? $_product : $_parent_product;
+        $_category_ids = $_p->getCategoryIds();
+        $_category_text = '';
+        foreach ($_category_ids as $_category_id) {
+            if ($_category_id === $_root_id) continue;
+            if (isset($_category_mappings[$_category_id])) {
+                $_category_text = $_category_mappings[$_category_id];
+            }
+        }
+
+        // build result record
         $_record = array(
             'name' => $_data['name'],
             'price' => $_data['price'],
@@ -74,9 +88,8 @@ function getRecords($_store_id) {
             'short_description' => $_data['short_description'],
             'description' => $_data['description'],
             'path' => $_base_url . $_parent_product_data['url_path'],
-            'sku' => $_data['sku'], // xxx simple product sku
-            'category' => '', // xxx category
-            'size' => '', // xxx simple product size
+            'sku' => $_data['sku'],
+            'category' => $_category_text,
     	    'brand' => $_product->getAttributeText('brand'),
     	    'stock' => ($_data['is_in_stock']) ? '1-2 werkdagen' : '3-5 werkdagen',
             'varient' => $_parent_product_data['sku'],
