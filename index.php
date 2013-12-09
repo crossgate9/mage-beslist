@@ -24,8 +24,7 @@ if ($_export_all_store) {
     $_records = getRecords($_store_id);
 }
 ?>
-
-<?php echo '<?xml version="1.0" encoding="utf-8">' ?>
+<?php echo '<?xml version="1.0" encoding="utf-8"?>' ?>
 <Products>
     <?php foreach ($_records as $_entry): ?>
     <Product>
@@ -33,7 +32,7 @@ if ($_export_all_store) {
         <Artikelcodefabrikant><?php echo $_entry['sku']; ?></Artikelcodefabrikant>
         <Omschrijving><?php echo $_entry['description']; ?></Omschrijving>
         <Prijs><?php echo formatPrice($_entry['price']); ?></Prijs>
-        <Levertijd></Levertijd>
+        <Levertijd><?php echo $_entry['stock']; ?></Levertijd>
         <Deeplink><?php echo $_entry['path']; ?></Deeplink>
         <?php foreach ($_entry['image'] as $_idx => $_image): ?>
         <?php if ($_idx === 0): ?>
@@ -44,9 +43,10 @@ if ($_export_all_store) {
         <?php endforeach; ?>
 
         <Categorie></Categorie>
-        <Merk></Merk>
-        <Portokosten></Portokosten>
-        <Winkelproductcode><?php echo $_entry['sku']; ?></Winkelproductcode>
+        <Merk><?php echo $_entry['brand']; ?></Merk>
+        <Portokosten>0</Portokosten>
+        <Winkelproductcode><?php echo $_entry['varient']; ?></Winkelproductcode>
+	<Maat><?php echo $_entry['size'] ?></Maat>
     </Product>
     <?php endforeach;?>
 </Products>
