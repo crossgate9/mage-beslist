@@ -1,30 +1,35 @@
 <?php
 
-// specific store view
-$_store_id = '0';
-if (isset($argv[1])) {
-    $_store_id = $argv[1];
+error_reporting(E_ALL | E_STRICT);
+date_default_timezone_set('Asia/Hong_Kong');
+
+require_once './vendor/autoload.php';
+use Ulrichsg\Getopt\Getopt;
+use Ulrichsg\Getopt\Option;
+
+$getopt = new Getopt(array(
+    (new Option(null, 'store', Getopt::REQUIRED_ARGUMENT))->setDescription('Store: [1,2] (The number is store view id)'),
+));
+$getopt->parse();
+
+$_store = $getopt->getOption('store');
+
+if ($_store === null) { 
+    echo $getopt->getHelpText();
+    die();
 }
-$_export_all_store = (($_store_id === NULL) || ($_store_id === '0'));
 
-require_once '../app/Mage.php';
-require_once 'utility.php';
+define('MAGENTO_ROOT', '../');
+$_mage_file = MAGENTO_ROOT . '/app/Mage.php';
+require_once $_mage_file;
 Mage::app();
+require_once 'utility.php';
 
-if ($_export_all_store) {
-    $_websites = Mage::app()->getWebsites();
-    foreach ($_websites as $_website) {
-        $_groups = $_website->getGroups();
-        foreach ($_groups as $_group) {
-            $_stores = $_group->getStores();
-            foreach ($_stores as $_store) {
-                $_store_id = $_store->getData('store_id');
-                $_records = getRecords($_store_id);
-            }
-        }
-    }
-} else {
-    $_records = getRecords($_store_id);
+$_store = json_decode($_store, true);
+$_records = array();
+foreach ($_store as $_store_id) {
+    $_record = getRecords($_store);
+    array_merge($_records, $_record);
 }
 ?>
 <?php echo '<?xml version="1.0" encoding="utf-8"?>' ?>
