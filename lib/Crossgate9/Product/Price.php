@@ -19,7 +19,7 @@ class Crossgate9_Product_Price extends Crossgate9_Product_Abstract {
         if (isset($_special_price) === false) {
           $_special_price = $_product->getData('price');
         }
-        $this->_column_name = 'special_price'
+        $this->_column_name = 'special_price';
         $this->_value = $_special_price;
         break;
       default:
