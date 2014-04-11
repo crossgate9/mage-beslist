@@ -27,7 +27,7 @@ require_once $_mage_file;
 Mage::app();
 require_once './lib/Autoload.php';
 
-include "./config.php";
+include './config/' . $_type . '.php';
 $_store = json_decode($_store, true);
 $_records = array();
 foreach ($_store as $_store_id) {
