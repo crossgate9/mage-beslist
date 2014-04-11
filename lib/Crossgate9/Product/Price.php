@@ -20,7 +20,7 @@ class Crossgate9_Product_Price extends Crossgate9_Product_Abstract {
           $_special_price = $_product->getData('price');
         }
         $this->_column_name = 'special_price';
-        $this->_value = $_special_price;
+        $this->_value = Crossgate9_Utility::formatPrice($_special_price);
         break;
       default:
         $this->_value = Crossgate9_Utility::formatPrice($_product->getData('price'));
