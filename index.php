@@ -25,6 +25,7 @@ require_once $_mage_file;
 Mage::app();
 require_once './lib/Autoload.php';
 
+include "./config.php";
 $_store = json_decode($_store, true);
 $_records = array();
 foreach ($_store as $_store_id) {
@@ -69,6 +70,7 @@ foreach ($_store as $_store_id) {
         <Artikelcodefabrikant><![CDATA[<?php echo $_entry['sku']; ?>]]></Artikelcodefabrikant>
         <Omschrijving><![CDATA[<?php echo $_entry['description']; ?>]]></Omschrijving>
         <Prijs><![CDATA[<?php echo $_entry['price']; ?>]]></Prijs>
+        <Prijs-was><![CDATA[<?php echo $_entry['special_price'] ?>]]></Prijs-was>
         <Levertijd><![CDATA[<?php echo $_entry['stock']; ?>]]></Levertijd>
         <Deeplink><![CDATA[<?php echo $_entry['path']; ?>]]></Deeplink>
         <?php foreach ($_entry['image'] as $_idx => $_image): ?>
@@ -82,7 +84,8 @@ foreach ($_store as $_store_id) {
         <Categorie><![CDATA[<?php echo $_entry['category']; ?>]]></Categorie>
         <Merk><![CDATA[<?php echo $_entry['brand']; ?>]]></Merk>
         <Portokosten>0</Portokosten>
-        <Winkelproductcode><![CDATA[<?php echo $_entry['parent_sku']; ?>]]></Winkelproductcode>
+        <Variant_code><![CDATA[<?php echo $_entry['parent_sku']; ?>]]></Variant_code>
+        <Winkelproductcode><![CDATA[<?php echo $_entry['sku']; ?>]]></Winkelproductcode>
     	<Maat><![CDATA[<?php echo $_entry['size'] ?>]]></Maat>
     </Product>
     <?php endforeach;?>
