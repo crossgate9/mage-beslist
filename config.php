@@ -6,6 +6,7 @@ $_columns = array(
     array('title'=>'Winkelproductcode', 'class'=>'Crossgate9_Product_SKU', 'options'=>array('parent'=>true)),
     array('title'=>'Omschrijving', 'class'=>'Crossgate9_Product_Description', 'options'=>array()),
     array('title'=>'Prijs', 'class'=>'Crossgate9_Product_Price', 'options'=>array('type'=>'regular')),
+    array('title'=>'', 'class'=>'Crossgate9_Product_Price', 'options'=>array('type'=>'special')),
     array('title'=>'Deeplink', 'class'=>'Crossgate9_Product_Path', 'options'=>array()),
     array('class'=>'Crossgate9_Product_Image', 'options'=>array()),
     array('class'=>'Crossgate9_Product_Category', 'options'=>array()),
