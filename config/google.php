@@ -3,7 +3,7 @@
 $_columns = array(
     array('title'=>'Titel', 'class'=>'Crossgate9_Product_Name', 'options'=>array()),
     array('title'=>'Artikelcodefabrikant', 'class'=>'Crossgate9_Product_SKU', 'options'=>array()),
-    array('title'=>'Variant_code', 'class'=>'Crossgate9_Product_SKU', 'options'=>array('parent'=>true)),
+    array('title'=>'Variant_code', 'class'=>'Crossgate9_Product_SKU', 'options'=>array('parent'=>false)),
     array('title'=>'Omschrijving', 'class'=>'Crossgate9_Product_Description', 'options'=>array()),
     array('title'=>'', 'class'=>'Crossgate9_Product_ShortDescription'),
     array('title'=>'Prijs', 'class'=>'Crossgate9_Product_Price', 'options'=>array('type'=>'regular')),
