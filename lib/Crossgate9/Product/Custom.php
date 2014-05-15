@@ -11,6 +11,9 @@ class Crossgate9_Product_Custom extends Crossgate9_Product_Abstract {
     $_attribute_name = $_options['attribute'];
 
     $this->_value = $_product->getResource()->getAttribute($_attribute_name)->getFrontend()->getValue($_product);
+    if (isset($_options['post']) === true) {
+      $this->_value = $_options['post']($this->_value);
+    }
 
     return $this->_value;
   }
