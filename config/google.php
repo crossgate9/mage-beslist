@@ -1,5 +1,8 @@
 <?php
-
+$_categories = array(
+    // key is category id
+    // 1 => 'Electronica/audio/mp3-spelers' 
+);
 $_columns = array(
     array('title'=>'Titel', 'class'=>'Crossgate9_Product_Name', 'options'=>array()),
     array('title'=>'Artikelcodefabrikant', 'class'=>'Crossgate9_Product_SKU', 'options'=>array()),
@@ -10,7 +13,7 @@ $_columns = array(
     array('title'=>'Prijs-was', 'class'=>'Crossgate9_Product_Price', 'options'=>array('type'=>'special')),
     array('title'=>'Deeplink', 'class'=>'Crossgate9_Product_Path', 'options'=>array()),
     array('title'=>'Image', 'class'=>'Crossgate9_Product_Image', 'options'=>array()),
-    array('title'=>'Categorie', 'class'=>'Crossgate9_Product_Category', 'options'=>array()),
+    array('title'=>'Categorie', 'class'=>'Crossgate9_Product_Category', 'options'=>array('mapping'=>$_categories)),
     array('title'=>'Stock', 'class'=>'Crossgate9_Product_Stock', 'options'=>array('in-stock'=>'in stock', 'out-of-stock'=>'out stock')),
     array('title'=>'Color', 'class'=>'Crossgate9_Product_Custom', 'options'=>array('name'=>'color', 'attribute'=>'color', 'post'=>function($_str) { return end(explode(';', $_str)); })),
     // array('title'=>'Merk', 'class'=>'Crosskgate9_Product_Custom', 'options'=>array('name'=>'brand', 'attribute'=>'brand')),
