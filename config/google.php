@@ -11,7 +11,7 @@ $_columns = array(
     array('title'=>'Deeplink', 'class'=>'Crossgate9_Product_Path', 'options'=>array()),
     array('title'=>'Image', 'class'=>'Crossgate9_Product_Image', 'options'=>array()),
     array('title'=>'Categorie', 'class'=>'Crossgate9_Product_Category', 'options'=>array()),
-    array('title'=>'Stock', 'class'=>'Crossgate9_Product_Stock', 'options'=>array('in-stock'=>'in stock', 'out-of-stock'=>'out stock')),
+    array('title'=>'Stock', 'class'=>'Crossgate9_Product_Stock', 'options'=>array('in-stock'=>'in stock', 'out-of-stock'=>'out of stock')),
     array('title'=>'Color', 'class'=>'Crossgate9_Product_Custom', 'options'=>array('name'=>'color', 'attribute'=>'color', 'post'=>function($_str) { return end(explode(';', $_str)); })),
     // array('title'=>'Merk', 'class'=>'Crosskgate9_Product_Custom', 'options'=>array('name'=>'brand', 'attribute'=>'brand')),
     // array('title'=>'Maat', 'class'=>'Crossgate9_Product_Custom', 'options'=>array('name'=>'size', 'attribute'=>'size')),
