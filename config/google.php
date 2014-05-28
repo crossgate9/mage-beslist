@@ -1,7 +1,10 @@
 <?php
 $_categories = array(
-    // key is category id
-    // 1 => 'Electronica/audio/mp3-spelers' 
+    // key is store id
+    // 1 => array(
+        // key is category id
+        // 1 => 'Electronica/audio/mp3-spelers' 
+    // )
 );
 $_columns = array(
     array('title'=>'Titel', 'class'=>'Crossgate9_Product_Name', 'options'=>array()),

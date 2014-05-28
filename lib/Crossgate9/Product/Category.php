@@ -7,8 +7,10 @@ class Crossgate9_Product_Category extends Crossgate9_Product_Abstract {
 
   public function getValue($_options = array()) {
     $_mapping = isset($_options['mapping']) ? $_options['mapping'] : array();
-
     $_store_id = $this->_entities['product']->getData('store_id');
+    if (isset($_mapping[$_store_id]) === true) {
+      $_mapping = $_mapping[$_store_id];
+    }
     $_product = $this->getParent();
     if ($_product === self::SKIP_RECORD) return $_product;
     
